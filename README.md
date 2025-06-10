@@ -122,17 +122,6 @@ To set up and run Eventure locally, follow these steps:
 7.  **Access the Application:**
     Open your web browser and navigate to `http://localhost:8000` (or the port shown by `php artisan serve`).
 
-## 🔑 Initial Setup for Roles
-
-After registration, users are assigned the `participant` role by default. To create an `organizer` (admin) user:
-
-1.  Register a new user through the application's registration page.
-2.  Access phpMyAdmin (`http://localhost/phpmyadmin`).
-3.  Navigate to the `eventure_db` database and the `users` table.
-4.  Find your newly registered user and manually change their `role` column value from `'participant'` to `'organizer'`.
-
-Now, when you log in with this user, they will have administrator privileges.
-
 ---
 
 ## 🚧 Project Status
@@ -144,5 +133,3 @@ This project is currently under active development as a university assignment. F
 ## 🤝 Contributing
 
 As this is a university project, external contributions are not expected. However, if you find any issues or have suggestions, please feel free to open an issue.
-
----
