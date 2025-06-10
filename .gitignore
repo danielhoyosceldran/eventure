@@ -1,0 +1,37 @@
+/.git
+/.idea/
+/.vscode/
+/vendor/
+/node_modules/
+/public/build/
+/public/hot
+/storage/*.key
+/bootstrap/cache/
+/.env
+.env.backup
+.env.testing
+/vendor
+/storage/*.log
+/storage/oauth-*.json
+/storage/framework/cache/*
+/storage/framework/sessions/*
+/storage/framework/testing/*
+/storage/framework/views/*
+/storage/logs/*
+/storage/app/public/*
+/storage/debugbar/*
+/storage/horizon/*
+/storage/telescope/*
+/storage/app/*.sqlite
+/public/storage
+/public/css
+/public/js
+/public/mix-manifest.json
+/public/hot
+/public/build
+
+# Exclude .DS_Store on macOS
+.DS_Store
+
+# Exclude thumbs.db on Windows
+Thumbs.db
