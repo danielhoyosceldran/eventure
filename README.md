@@ -1,66 +1,154 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Eventure
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Event Management Platform
 
-## About Laravel
+![Laravel v11.x](https://img.shields.io/badge/Laravel-v11.x-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)
+![React v18.x](https://img.shields.io/badge/React-v18.x-61DAFB?style=for-the-badge&logo=react&logoColor=black)
+![Inertia.js](https://img.shields.io/badge/Inertia.js-000000?style=for-the-badge&logo=inertia&logoColor=white)
+![PHP v8.2+](https://img.shields.io/badge/PHP-v8.2+-777BB4?style=for-the-badge&logo=php&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+![shadcn/ui](https://img.shields.io/badge/shadcn%2Fui-000000?style=for-the-badge&logo=vercel&logoColor=white)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 🎯 Project Goal
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Eventure is a web application designed to simplify event management and participation. This project serves as a university assignment, focusing on demonstrating core web development concepts rather than production-grade security or scalability.
 
-## Learning Laravel
+The primary objectives are:
+* Allow **Administrators** to create, manage (CRUD), and view participants for various events.
+* Enable **Participants** to browse available events and register for them.
+* Provide user profile management for all registered users.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## ✨ Features
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+* **User Authentication:** Secure registration, login, and password management.
+* **Role-Based Access Control:** Distinct functionalities for `Organizer` (Admin) and `Participant` roles.
+* **Event Management (Organizer):**
+    * Create new events with details (name, description, dates, location, capacity, cover photo).
+    * Edit existing event details.
+    * Delete events.
+    * View a list of participants for each event.
+* **Event Browse (Participant):**
+    * Browse a list of available events.
+    * View detailed information for each event.
+    * Filter events by title (and potentially by location/date).
+* **Event Registration (Participant):**
+    * Register and unregister for events.
+    * Automatic capacity checks.
+* **User Profile Management:**
+    * Edit personal details (username, email, password).
+    * View a list of registered events (for Participants).
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 🛠️ Technologies & Tools
 
-## Laravel Sponsors
+**Backend:**
+* **PHP (v8.2+)**: Core programming language.
+* **Laravel Framework (v11.x)**: MVC framework for robust web application development.
+    * **Eloquent ORM**: For seamless database interaction.
+    * **Migrations**: For database schema management.
+    * **Middleware**: For request filtering and access control.
+* **MySQL**: Relational database management system (via XAMPP).
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+**Frontend:**
+* **React (v18.x)**: JavaScript library for building user interfaces.
+* **Inertia.js**: A "bridge" between Laravel and React, enabling single-page application (SPA) experiences without building an API.
+* **Vite**: Frontend build tool for fast development and asset bundling.
+* **shadcn/ui**: Component library for aesthetic and accessible UI elements.
 
-### Premium Partners
+**Development Environment:**
+* **XAMPP**: Apache, MySQL for local server setup.
+* **Composer**: PHP dependency manager.
+* **NPM**: Node.js package manager for frontend dependencies.
+* **Git**: Version control.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+## 🚀 Getting Started
 
-## Contributing
+To set up and run Eventure locally, follow these steps:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+1.  **Clone the Repository:**
+    ```bash
+    git clone [your-repository-url] eventure
+    cd eventure
+    ```
 
-## Code of Conduct
+2.  **Install PHP Dependencies:**
+    ```bash
+    composer install
+    ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+3.  **Configure Environment Variables:**
+    * Copy the example environment file:
+        ```bash
+        cp .env.example .env
+        ```
+    * Generate an application key:
+        ```bash
+        php artisan key:generate
+        ```
+    * Open `.env` and configure your MySQL database connection details:
+        ```ini
+        DB_CONNECTION=mysql
+        DB_HOST=127.0.0.1
+        DB_PORT=3306
+        DB_DATABASE=eventure_db # Ensure this database exists in phpMyAdmin
+        DB_USERNAME=root
+        DB_PASSWORD=
+        ```
 
-## Security Vulnerabilities
+4.  **Database Setup:**
+    * Ensure MySQL is running in your XAMPP Control Panel.
+    * Create the database (`eventure_db`) in phpMyAdmin.
+    * Run migrations to set up database tables:
+        ```bash
+        php artisan migrate:fresh
+        ```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+5.  **Install Node.js Dependencies:**
+    ```bash
+    npm install
+    ```
 
-## License
+6.  **Run Development Servers:**
+    * In your **first terminal**, start the Laravel development server:
+        ```bash
+        php artisan serve
+        ```
+    * In your **second terminal**, start the Vite frontend development server:
+        ```bash
+        npm run dev
+        ```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+7.  **Access the Application:**
+    Open your web browser and navigate to `http://localhost:8000` (or the port shown by `php artisan serve`).
+
+## 🔑 Initial Setup for Roles
+
+After registration, users are assigned the `participant` role by default. To create an `organizer` (admin) user:
+
+1.  Register a new user through the application's registration page.
+2.  Access phpMyAdmin (`http://localhost/phpmyadmin`).
+3.  Navigate to the `eventure_db` database and the `users` table.
+4.  Find your newly registered user and manually change their `role` column value from `'participant'` to `'organizer'`.
+
+Now, when you log in with this user, they will have administrator privileges.
+
+---
+
+## 🚧 Project Status
+
+This project is currently under active development as a university assignment. Features are being implemented iteratively.
+
+---
+
+## 🤝 Contributing
+
+As this is a university project, external contributions are not expected. However, if you find any issues or have suggestions, please feel free to open an issue.
+
+---
+
+## 📄 License
+
+This project is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+---
