@@ -146,9 +146,3 @@ This project is currently under active development as a university assignment. F
 As this is a university project, external contributions are not expected. However, if you find any issues or have suggestions, please feel free to open an issue.
 
 ---
-
-## 📄 License
-
-This project is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-
----
