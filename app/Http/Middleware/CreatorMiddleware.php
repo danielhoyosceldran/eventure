@@ -21,6 +21,6 @@ class CreatorMiddleware
         // Si no és un 'creator' (o no està autenticat), redirigeix o avorta
         // Pots redirigir al dashboard amb un missatge, a la pàgina de login, o mostrar un error 403
         //return redirect('/dashboard')->with('error', 'Accés denegat. Només els creadors poden accedir a aquesta secció.');
-        return abort(403, 'Only participants can acces here.');
+        return abort(403, 'Only creator can acces here.');
     }
 }

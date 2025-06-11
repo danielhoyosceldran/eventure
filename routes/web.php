@@ -18,20 +18,19 @@ Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/event_creator', function () {
+    return Inertia::render('EventCreator');
+})->middleware(['auth', 'creator'])->name('event.creator');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::middleware(['auth', 'creator'])->group(function () {
-    Route::get('/dashboard-creator', [AdminController::class, 'index'])->name('dashboard.creator');
-    Route::resource('event-creator', EventController::class)->name('event.creator');
-});
-
-Route::middleware(['auth', 'creator'])->group(function () {
-    Route::get('/events-participant', [AdminController::class, 'index'])->name('events.participant');
-    Route::resource('event-participant', EventController::class)->name('event.participant');
-});
+// Route::middleware(['auth', 'creator'])->group(function () {
+//     Route::get('/events-participant', [AdminController::class, 'index'])->name('events.participant');
+//     Route::get('event-participant', EventController::class)->name('event.participant');
+// });
 
 require __DIR__.'/auth.php';
