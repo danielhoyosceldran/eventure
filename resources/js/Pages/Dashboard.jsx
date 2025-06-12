@@ -1,5 +1,6 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import { Head } from '@inertiajs/react';
+import { Head, Link } from '@inertiajs/react';
+
 
 export default function Dashboard() {
     return (
@@ -18,6 +19,8 @@ export default function Dashboard() {
                         <div className="p-6 text-gray-900 dark:text-gray-100">
                             You're logged in!
                         </div>
+                        {/* todo: fer que sigui dins dels EventComponent */}
+                        <Link href={route("event.creator")}> Event </Link>
                     </div>
                 </div>
             </div>

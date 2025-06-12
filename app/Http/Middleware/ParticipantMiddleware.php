@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth; // Per accedir a l'usuari autenticat
 use Symfony\Component\HttpFoundation\Response;
 
-class CreatorMiddleware
+class ParticipantMiddleware
 {
     public function handle(Request $request, Closure $next): Response
     {

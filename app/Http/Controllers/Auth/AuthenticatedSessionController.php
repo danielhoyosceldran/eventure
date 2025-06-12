@@ -29,11 +29,17 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
-        $request->authenticate();
+        $request->authenticate(); // Autentica l'usuari
 
-        $request->session()->regenerate();
+        $request->session()->regenerate(); // Regenera la sessió
 
-        return redirect()->intended(route('dashboard', absolute: false));
+        // Lògica de redirecció basada en el rol de l'usuari
+        if (Auth::user()->role === 'creator') {
+            return redirect()->intended(route('dashboard')); // Redirigeix al dashboard de creador
+        }
+
+        // Per a 'participant' o qualsevol altre rol no 'creator'
+        return redirect()->intended(route('events')); // Redirigeix a la pàgina d'esdeveniments per a participants
     }
 
     /**
