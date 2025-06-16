@@ -22,30 +22,30 @@ export default function ConfirmPassword() {
         <GuestLayout>
             <Head title="Confirm Password" />
 
-            <div className="mb-4 text-sm text-gray-600 dark:text-gray-400">
+            <div className="mb-3 text-muted">
                 This is a secure area of the application. Please confirm your
                 password before continuing.
             </div>
 
             <form onSubmit={submit}>
-                <div className="mt-4">
-                    <InputLabel htmlFor="password" value="Password" />
+                <div className="mb-3">
+                    <InputLabel htmlFor="password" value="Password" className="form-label" />
 
                     <TextInput
                         id="password"
                         type="password"
                         name="password"
                         value={data.password}
-                        className="mt-1 block w-full"
-                        isFocused={true}
+                        className="form-control"
+                        autoFocus={true}
                         onChange={(e) => setData('password', e.target.value)}
                     />
 
-                    <InputError message={errors.password} className="mt-2" />
+                    <InputError message={errors.password} className="mt-2 text-danger" />
                 </div>
 
-                <div className="mt-4 flex items-center justify-end">
-                    <PrimaryButton className="ms-4" disabled={processing}>
+                <div className="d-flex justify-content-end">
+                    <PrimaryButton className="ms-2 btn btn-primary" disabled={processing}>
                         Confirm
                     </PrimaryButton>
                 </div>

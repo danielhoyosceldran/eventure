@@ -3,7 +3,7 @@ export default function EventCard({redirectTo}) {
     return (
         <div className="col-4 border p-3 d-flex align-items-center justify-content-center">
             <div className="card w-75">
-                <img src="mountain.jpg" className="card-img-top" style={{height: "100px"}} alt="Grand canyon"/>
+                <img src="https://images.unsplash.com/photo-1532444458054-01a7dd3e9fca?q=80&w=1541&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" className="card-img-top" style={{height: "100px"}} alt="Grand canyon"/>
                 <div className="card-body">
                     <h5 className="card-title d-flex justify-content-between align-items-center">
                         Grand canyon expedition
