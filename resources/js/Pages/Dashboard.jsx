@@ -19,7 +19,7 @@ export default function Dashboard() {
                             You're logged in!
                         </div>
                         {/* todo: fer que sigui dins dels EventComponent */}
-                        <Link href={route("event.creator")} className="btn btn-primary m-3">
+                        <Link href={route("event.creator.show", { event_id: "sample_id" })} className="btn btn-primary m-3">
                             Event
                         </Link>
                     </div>

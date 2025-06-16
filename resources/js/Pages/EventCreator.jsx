@@ -1,7 +1,7 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
 
-export default function EventCreator() {
+export default function EventCreator({event}) {
     return (
         <AuthenticatedLayout
             header={
@@ -16,7 +16,7 @@ export default function EventCreator() {
                 <div className="container">
                     <div className="card shadow-sm">
                         <div className="card-body text-dark">
-                            You're logged in as an event creator!
+                            {event}
                         </div>
                     </div>
                 </div>

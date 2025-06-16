@@ -17,7 +17,7 @@ class EventController extends Controller
         // if (!$event) {
         //     abort(404);
         // }
-       $event = "[
+       $event = "{
             'id' => $event_id,
             'name' => 'Sample Event',
             'description' => 'This is a sample event description.',
@@ -25,8 +25,27 @@ class EventController extends Controller
             'end_date' => '2023-10-02',
             'location' => 'Sample Location',
             'capacity' => 100
-        ];";
+            }";
         return Inertia::render('EventParticipant', ['event' => $event]);
+    }
+
+    public function showCreatorEvent($event_id)
+    {
+        // todo: Fer que es recuperi l'event de la base de dades
+        // $event = Event::find($event_id);
+        // if (!$event) {
+        //     abort(404);
+        // }
+       $event = "{
+            'id' => $event_id,
+            'name' => 'Sample Event Creator',
+            'description' => 'This is a sample event description.',
+            'start_date' => '2023-10-01',
+            'end_date' => '2023-10-02',
+            'location' => 'Sample Location',
+            'capacity' => 100
+            }";
+        return Inertia::render('EventCreator', ['event' => $event]);
     }
 
     public function store(Request $request): RedirectResponse
