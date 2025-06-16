@@ -1,4 +1,5 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
+import EventCard from '@/Components/EventCard';
 import { Head, Link } from '@inertiajs/react';
 
 export default function Events() {
@@ -15,16 +16,11 @@ export default function Events() {
             <div className="py-12">
                 <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
                     <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg dark:bg-gray-800">
-                        <div className="p-6 text-gray-900 dark:text-gray-100">
-                            You're logged in!
-                        </div>
-                        {/* todo: fer que sigui dins dels EventComponent */}
-                        <Link href={route("event.participant")}> Event </Link>
+                        <EventCard redirectTo={route("event.participant")} />
                     </div>
                 </div>
             </div>
         </AuthenticatedLayout>
     );
 }
-
 
