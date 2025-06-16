@@ -17,7 +17,7 @@ export default function Events() {
                 <div className="container">
                     <div className="card shadow-sm">
                         <div className="card-body bg-light">
-                            <EventCard redirectTo={route("event.participant")} />
+                            <EventCard redirectTo={route("event.participant.show", { event_id: "sample_id" })} />
                         </div>
                     </div>
                 </div>

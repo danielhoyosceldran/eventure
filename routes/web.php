@@ -44,13 +44,15 @@ Route::get('/events', function () {
     return Inertia::render('Events');
 })->middleware(['auth', 'participant'])->name('events');
 
-Route::get('/event_creator', function () {
-    return Inertia::render('EventCreator');
-})->middleware(['auth', 'participant'])->name('events.creator');
+Route::get('/event_creator/{event_id?}', function ($event_id = null) {
+    return Inertia::render('EventCreator', ['eventId' => $event_id]);
+})->middleware(['auth', 'creator'])->name('event.creator');
 
-Route::get('/event_participant', function () {
-    return Inertia::render('EventParticipant');
-})->middleware(['auth', 'participant'])->name('event.participant');
+// Route::get('/event_participant/{event_id?}', function ($event_id = null) {
+//     return Inertia::render('EventParticipant', ['eventId' => $event_id]);
+// })->middleware(['auth', 'participant'])->name('event.participant');
+
+Route::get('/event_participant/{event_id}', [EventController::class, 'showParticipantEvent'])->name('event.participant.show');
 
 // Gestió del es peticions a "l'API"
 Route::resource('creator/events', EventController::class)->names([

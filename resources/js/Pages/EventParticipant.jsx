@@ -1,7 +1,7 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
 
-export default function EventParticipant() {
+export default function EventParticipant({event}) {
     return (
         <AuthenticatedLayout
             header={
@@ -16,7 +16,7 @@ export default function EventParticipant() {
                 <div className="container">
                     <div className="card shadow-sm">
                         <div className="card-body text-dark">
-                            You're logged in as a participant!
+                            {event}
                         </div>
                     </div>
                 </div>
