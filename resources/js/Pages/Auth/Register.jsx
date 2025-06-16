@@ -27,49 +27,49 @@ export default function Register() {
         <GuestLayout>
             <Head title="Register" />
 
-            <form onSubmit={submit}>
-                <div>
-                    <InputLabel htmlFor="name" value="Name" />
+            <form onSubmit={submit} className="container mt-4" style={{maxWidth: 500}}>
+                <div className="mb-3">
+                    <InputLabel htmlFor="name" value="Name" className="form-label" />
 
                     <TextInput
                         id="name"
                         name="name"
                         value={data.name}
-                        className="mt-1 block w-full"
+                        className="form-control"
                         autoComplete="name"
                         isFocused={true}
                         onChange={(e) => setData('name', e.target.value)}
                         required
                     />
 
-                    <InputError message={errors.name} className="mt-2" />
+                    <InputError message={errors.name} className="text-danger mt-2" />
                 </div>
 
-                <div className="mt-4">
-                    <InputLabel htmlFor="email" value="Email" />
+                <div className="mb-3">
+                    <InputLabel htmlFor="email" value="Email" className="form-label" />
 
                     <TextInput
                         id="email"
                         type="email"
                         name="email"
                         value={data.email}
-                        className="mt-1 block w-full"
+                        className="form-control"
                         autoComplete="username"
                         onChange={(e) => setData('email', e.target.value)}
                         required
                     />
 
-                    <InputError message={errors.email} className="mt-2" />
+                    <InputError message={errors.email} className="text-danger mt-2" />
                 </div>
 
-                <div className="mt-4">
-                    <InputLabel htmlFor="role" value="Role" />
+                <div className="mb-3">
+                    <InputLabel htmlFor="role" value="Role" className="form-label" />
 
                     <select
                         id="role"
                         name="role"
                         value={data.role}
-                        className="mt-1 block w-full"
+                        className="form-select"
                         autoComplete="role"
                         onChange={(e) => setData('role', e.target.value)}
                         required
@@ -79,30 +79,31 @@ export default function Register() {
                         <option value="creator">Creator</option>
                     </select>
 
-                    <InputError message={errors.role} className="mt-2" />
+                    <InputError message={errors.role} className="text-danger mt-2" />
                 </div>
 
-                <div className="mt-4">
-                    <InputLabel htmlFor="password" value="Password" />
+                <div className="mb-3">
+                    <InputLabel htmlFor="password" value="Password" className="form-label" />
 
                     <TextInput
                         id="password"
                         type="password"
                         name="password"
                         value={data.password}
-                        className="mt-1 block w-full"
+                        className="form-control"
                         autoComplete="new-password"
                         onChange={(e) => setData('password', e.target.value)}
                         required
                     />
 
-                    <InputError message={errors.password} className="mt-2" />
+                    <InputError message={errors.password} className="text-danger mt-2" />
                 </div>
 
-                <div className="mt-4">
+                <div className="mb-3">
                     <InputLabel
                         htmlFor="password_confirmation"
                         value="Confirm Password"
+                        className="form-label"
                     />
 
                     <TextInput
@@ -110,7 +111,7 @@ export default function Register() {
                         type="password"
                         name="password_confirmation"
                         value={data.password_confirmation}
-                        className="mt-1 block w-full"
+                        className="form-control"
                         autoComplete="new-password"
                         onChange={(e) =>
                             setData('password_confirmation', e.target.value)
@@ -120,19 +121,19 @@ export default function Register() {
 
                     <InputError
                         message={errors.password_confirmation}
-                        className="mt-2"
+                        className="text-danger mt-2"
                     />
                 </div>
 
-                <div className="mt-4 flex items-center justify-end">
+                <div className="mb-3 d-flex justify-content-between align-items-center">
                     <Link
                         href={route('login')}
-                        className="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:text-gray-400 dark:hover:text-gray-100 dark:focus:ring-offset-gray-800"
+                        className="text-decoration-underline text-secondary"
                     >
                         Already registered?
                     </Link>
 
-                    <PrimaryButton className="ms-4" disabled={processing}>
+                    <PrimaryButton className="btn btn-primary ms-2" disabled={processing}>
                         Register
                     </PrimaryButton>
                 </div>
