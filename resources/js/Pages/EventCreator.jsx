@@ -6,8 +6,16 @@ import TextInput from '@/Components/TextInput';
 import { Head, useForm } from '@inertiajs/react';
 
 export default function EventCreator({event}) {
-    const { data, setData, post, processing, errors, reset } = useForm({
+    const { data, setData, post, processing, errors, reset } = useForm(event === null ? {
             name: '',
+            description: '',
+            start_date: '',
+            end_date: '',
+            location: '',
+            capacity: '',
+            //isOpen: true, // todo: fer dinàmic
+        } : {
+            name: 'Pepito',
             description: '',
             start_date: '',
             end_date: '',
