@@ -1,4 +1,5 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
+
 import { Head, Link } from '@inertiajs/react';
 
 export default function Dashboard() {
@@ -20,7 +21,7 @@ export default function Dashboard() {
                         </div>
                         {/* todo: fer que sigui dins dels EventComponent */}
                         <Link href={route("event.creator.show", { event_id: "sample_id" })} className="btn btn-primary m-3">
-                            Event
+                            Create Event
                         </Link>
                     </div>
                 </div>

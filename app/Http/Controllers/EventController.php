@@ -57,7 +57,7 @@ class EventController extends Controller
             'end_date' => 'nullable|date|after_or_equal:start_date',
             'location' => 'required|string|max:255',
             'capacity' => 'required|integer|min:1',
-            //'isOpen' => 'boolean',
+            'isOpen' => 'boolean',
             // 'cover_photo' => 'nullable|image|max:2048',
         ]);
 
