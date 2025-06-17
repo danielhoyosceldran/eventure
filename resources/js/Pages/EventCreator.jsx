@@ -4,8 +4,12 @@ import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
 import { Head, useForm } from '@inertiajs/react';
+import { useEffect } from 'react';
 
 export default function EventCreator({event}) {
+    useEffect(() => {
+        console.log(event);
+    }, [event]);
     const { data, setData, post, processing, errors, reset } = useForm(event === null ? {
             name: '',
             description: '',
@@ -15,17 +19,19 @@ export default function EventCreator({event}) {
             capacity: '',
             //isOpen: true, // todo: fer dinàmic
         } : {
-            name: 'Pepito',
-            description: '',
-            start_date: '',
-            end_date: '',
-            location: '',
-            capacity: '',
-            //isOpen: true, // todo: fer dinàmic
+            name: event.name,
+            description: event.description,
+            start_date: event.start_date,
+            end_date: event.end_date,
+            location: event.location,
+            capacity: event.capacity,
+            // isOpen: event.isOpen,
         });
 
         const submit = (e) => {
             e.preventDefault();
+
+            console.log('Submitting event data:', data);
 
             post(route('creator.events.store'), {
                 onSuccess: () => {
@@ -59,7 +65,7 @@ export default function EventCreator({event}) {
                         <div className="card-body text-dark">
                             <form onSubmit={submit} className="container mt-4" style={{maxWidth: 500}}>
                                 <div className="mb-3">
-                                    <InputLabel htmlFor="name" value="Name" className="form-label" />
+                                    <InputLabel htmlFor="name" value="Title" className="form-label" />
 
                                     <TextInput
                                         id="name"

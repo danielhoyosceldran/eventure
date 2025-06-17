@@ -31,21 +31,8 @@ class EventController extends Controller
 
     public function showCreatorEvent($event_id)
     {
-        // todo: Fer que es recuperi l'event de la base de dades
-        // $event_id pot ser === "create_event" per crear un nou event
-        // $event = Event::find($event_id);
-        // if (!$event) {
-        //     abort(404);
-        // }
-       $event = $event_id === "create_event" ? null : "{
-            'id' => $event_id,
-            'name' => 'Sample Event Creator',
-            'description' => 'This is a sample event description.',
-            'start_date' => '2023-10-01',
-            'end_date' => '2023-10-02',
-            'location' => 'Sample Location',
-            'capacity' => 100
-            }";
+        $event = $event_id === "create_event" ? null : Event::find($event_id);
+
         return Inertia::render('EventCreator', ['event' => $event]);
     }
 
