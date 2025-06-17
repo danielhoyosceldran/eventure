@@ -7,17 +7,14 @@ import { Head, useForm } from '@inertiajs/react';
 import { useEffect } from 'react';
 
 export default function EventCreator({event}) {
-    useEffect(() => {
-        console.log(event);
-    }, [event]);
     const { data, setData, post, processing, errors, reset } = useForm(event === null ? {
-            name: '',
+        name: '',
             description: '',
             start_date: '',
             end_date: '',
             location: '',
             capacity: '',
-            //isOpen: true, // todo: fer dinàmic
+            isOpen: true,
         } : {
             name: event.name,
             description: event.description,
@@ -25,9 +22,12 @@ export default function EventCreator({event}) {
             end_date: event.end_date,
             location: event.location,
             capacity: event.capacity,
-            // isOpen: event.isOpen,
+            isOpen: event.isOpen,
         });
 
+        useEffect(() => {
+            console.log(data.isOpen);
+        }, [data.isOpen]);
         const submit = (e) => {
             e.preventDefault();
 
@@ -155,8 +155,17 @@ export default function EventCreator({event}) {
                                     <InputError message={errors.capacity} className="text-danger mt-2" />
                                 </div>
 
-                                {/* todo: isOpen input */}
-
+                                <div className="mb-3">
+                                    <InputLabel htmlFor="isOpen" value="Is Open" className="form-label" />
+                                    <input
+                                        id="isOpen"
+                                        type="checkbox"
+                                        name="isOpen"
+                                        checked={data.isOpen}
+                                        onChange={(e) => setData('isOpen', e.target.checked)}
+                                    />
+                                    <InputError message={errors.isOpen} className="text-danger mt-2" />
+                                </div>
 
                                 <div className="mb-3 d-flex justify-content-between align-items-center">
                                     <PrimaryButton className="btn btn-primary ms-2" disabled={true}>

@@ -22,7 +22,7 @@ class Event extends Model
         'end_date',
         'location',
         'capacity',
-        //'isOpen', // Assegura't que el camp isOpen estigui aquí si el vols gestionar
+        'isOpen',
         //'cover_photo', // Assegura't que el camp cover_photo estigui aquí si el vols gestionar
     ];
 
