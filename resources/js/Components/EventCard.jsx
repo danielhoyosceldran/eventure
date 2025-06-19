@@ -1,9 +1,11 @@
 import { Link } from '@inertiajs/react';
+
+//todo: Fer que els events siguin dinàmics i que es carreguin des de la base de dades
 export default function EventCard({redirectTo}) {
     return (
-        <div className="col-4 border p-3 d-flex align-items-center justify-content-center">
-            <div className="card w-75">
-                <img src="https://images.unsplash.com/photo-1532444458054-01a7dd3e9fca?q=80&w=1541&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" className="card-img-top" style={{height: "100px"}} alt="Grand canyon"/>
+        <div className="col-lg-4 col-md-6 p-3 d-flex align-items-center justify-content-center">
+            <div className="card w-100">
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(18).webp" className="card-img-top" style={{height: "100px"}} alt="Grand canyon"/>
                 <div className="card-body">
                     <h5 className="card-title d-flex justify-content-between align-items-center">
                         Title

@@ -37,9 +37,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified', 'creator'])->name('dashboard');
 
 
-Route::get('/events', function () {
-    return Inertia::render('Events');
-})->middleware(['auth', 'participant'])->name('events');
+Route::get('/events', [EventController::class, 'showEvents'])->middleware(['auth', 'participant'])->name('events');
 
 
 Route::get('/event_creator/{event_id}', [EventController::class, 'showCreatorEvent'])

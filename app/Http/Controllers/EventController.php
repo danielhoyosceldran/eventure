@@ -12,7 +12,7 @@ class EventController extends Controller
 {
     public function showParticipantEvent($event_id)
     {
-       $event = $event_id === "create_event" ? null : Event::find($event_id);
+       $event =Event::find($event_id);
        if (!$event) {
             abort(404);
         }
@@ -24,6 +24,13 @@ class EventController extends Controller
         $event = $event_id === "create_event" ? null : Event::find($event_id);
 
         return Inertia::render('EventCreator', ['event' => $event]);
+    }
+
+    public function showEvents()
+    {
+        $events = Event::all();
+
+        return Inertia::render('Events', ['events' => $events]);
     }
 
     public function store(Request $request): RedirectResponse

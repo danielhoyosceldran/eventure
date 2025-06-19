@@ -1,8 +1,9 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import EventCard from '@/Components/EventCard';
 import { Head, Link } from '@inertiajs/react';
+import { useEffect } from 'react';
 
-export default function Events() {
+export default function Events({ events }) {
     return (
         <AuthenticatedLayout
             header={
@@ -17,7 +18,18 @@ export default function Events() {
                 <div className="container">
                     <div className="card shadow-sm">
                         <div className="card-body bg-light">
-                            <EventCard redirectTo={route("event.participant.show", { event_id: "sample_id" })} />
+                        <div className="row">
+                            {
+                                events.map((event) => {
+                                    return (
+                                        <EventCard
+                                            key={event.id}
+                                            redirectTo={route("event.participant.show", { event_id: event.id })}
+                                        />
+                                    );
+                                }
+                            )}
+                        </div>
                         </div>
                     </div>
                 </div>

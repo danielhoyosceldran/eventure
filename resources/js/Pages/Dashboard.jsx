@@ -2,7 +2,7 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 
 import { Head, Link } from '@inertiajs/react';
 
-export default function Dashboard() {
+export default function Dashboard( {events} ) {
     return (
         <AuthenticatedLayout
             header={

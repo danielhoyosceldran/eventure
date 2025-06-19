@@ -34,10 +34,9 @@ class Event extends Model
     protected $casts = [
         'start_date' => 'datetime',
         'end_date' => 'datetime',
-        //'isOpen' => 'boolean', // És bona pràctica fer cast de booleans
+        'isOpen' => 'boolean',
     ];
 
-    // Si ja has definit la migració event_user, afegeix la relació Many-to-Many amb usuaris
     public function users()
     {
         return $this->belongsToMany(User::class, 'event_user')->withTimestamps();
