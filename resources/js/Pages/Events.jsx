@@ -24,7 +24,7 @@ export default function Events({ events }) {
                                     return (
                                         <EventCard
                                             key={event.id}
-                                            redirectTo={route("event.participant.show", { event_id: event.id })}
+                                            event={event}
                                         />
                                     );
                                 }
