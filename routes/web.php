@@ -16,14 +16,13 @@ Route::get('/', function () {
         }
     }
 
-    // Si l'usuari no està autenticat (guest), o no té cap dels rols anteriors (o si falls a la lògica de dalt),
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
     ]);
-})->name('welcome'); // Manté el nom de la ruta
+})->name('welcome');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -31,11 +30,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-// Gestió de les rutes per a creadors i participants
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified', 'creator'])->name('dashboard');
-
+Route::get('/dashboard', [EventController::class, 'showCreatorEvents'])->middleware(['auth', 'verified', 'creator'])->name('dashboard');
 
 Route::get('/events', [EventController::class, 'showEvents'])->middleware(['auth', 'participant'])->name('events');
 

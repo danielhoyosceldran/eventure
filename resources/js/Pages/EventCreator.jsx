@@ -168,7 +168,7 @@ export default function EventCreator({event}) {
                                 </div>
 
                                 <div className="mb-3 d-flex justify-content-between align-items-center">
-                                    <PrimaryButton className="btn btn-primary ms-2" disabled={true}>
+                                    <PrimaryButton className="btn btn-primary ms-2" disabled={false} onClick={() => window.history.back()}>
                                         Cancel
                                     </PrimaryButton>
                                     <PrimaryButton className="btn btn-primary ms-2" disabled={processing}>

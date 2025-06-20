@@ -1,8 +1,13 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
+import EventRow from '@/Components/EventRow';
 
 import { Head, Link } from '@inertiajs/react';
+import { useEffect } from 'react';
 
 export default function Dashboard( {events} ) {
+    useEffect(() => {
+        console.log(events);
+    }, [events]);
     return (
         <AuthenticatedLayout
             header={
@@ -19,7 +24,11 @@ export default function Dashboard( {events} ) {
                         <div className="card-body text-dark">
                             You're logged in!
                         </div>
-                        {/* todo: fer que sigui dins dels EventComponent */}
+                        {
+                            events.map((event) => (
+                                <EventRow key={event.id} event={event} />
+                            ))
+                        }
                         <Link href={route("event.creator.show", { event_id: "create_event" })} className="btn btn-primary m-3">
                             Create Event
                         </Link>

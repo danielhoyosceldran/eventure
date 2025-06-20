@@ -10,6 +10,9 @@ use Illuminate\Http\RedirectResponse; // Per al tipus de retorn de la redirecci�
 
 class EventController extends Controller
 {
+    // showEvent functions.
+    // Hauria de millorar això perquè tinc separat  el participant i el creador de l'esdeveniment. Hauria de poder recuperar
+    // la informació de l'esdeveniment.
     public function showParticipantEvent($event_id)
     {
        $event =Event::find($event_id);
@@ -33,6 +36,17 @@ class EventController extends Controller
         return Inertia::render('Events', ['events' => $events]);
     }
 
+    public function showCreatorEvents() {
+        $user = Auth::user();
+        if (!$user || $user->role !== 'creator') {
+            abort(403, 'Unauthorized action.');
+        }
+
+        $events = $user->events; // Assuming the User model has a relationship with Event
+
+        return Inertia::render('Dashboard', ['events' => $events]);
+    }
+
     public function store(Request $request): RedirectResponse
     {
         $validatedData = $request->validate([
@@ -48,6 +62,11 @@ class EventController extends Controller
 
 
         $event = Event::create($validatedData);
+
+        $user = Auth::user();
+        if ($user) {
+            $event->users()->attach($user->id);
+        }
 
 
         return redirect()->route('dashboard')
