@@ -7,23 +7,15 @@ import { Head, useForm } from '@inertiajs/react';
 import { useEffect } from 'react';
 
 export default function EventCreator({event}) {
-    const { data, setData, post, processing, errors, reset } = useForm(event === null ? {
-        name: '',
-            description: '',
-            start_date: '',
-            end_date: '',
-            location: '',
-            capacity: '',
-            isOpen: true,
-        } : {
-            name: event.name,
-            description: event.description,
-            start_date: event.start_date,
-            end_date: event.end_date,
-            location: event.location,
-            capacity: event.capacity,
-            isOpen: event.isOpen,
-        });
+    const { data, setData, post, patch, processing, errors, reset } = useForm({
+        name: event?.name || '', // Usa optional chaining i fallback a ''
+        description: event?.description || '',
+        start_date: event?.start_date ? new Date(event.start_date).toISOString().slice(0, 16) : '', // Format per datetime-local
+        end_date: event?.end_date ? new Date(event.end_date).toISOString().slice(0, 16) : '',
+        location: event?.location || '',
+        capacity: event?.capacity || '',
+        isOpen: event?.isOpen ?? true, // Usa nullish coalescing per a valors booleans o per defecte
+    });
 
         useEffect(() => {
             console.log(data.isOpen);
@@ -33,21 +25,28 @@ export default function EventCreator({event}) {
 
             console.log('Submitting event data:', data);
 
-            post(route('creator.events.store'), {
-                onSuccess: () => {
-                    console.log('Event created successfully!');
-                    reset(); // Neteja el formulari
-                    // La redirecció ja la gestiona el controlador de Laravel.
-                    // Inertia recarregarà la pàgina automàticament.
-                },
-                onError: (formErrors) => {
-                    // Acció a realitzar si hi ha errors de validació o altres errors
-                    console.error('Error creating event:', formErrors);
-                    // `errors` de useForm ja conté els errors per a mostrar-los al costat dels camps del formulari
-                },
-                // Si inclous fitxers (com cover_photo), afegeix:
-                // forceFormData: true,
-            });
+            if (event == null) {
+                post(route('creator.events.store'), {
+                    onSuccess: () => {
+                        console.log('Event created successfully!');
+                        reset();
+                    },
+                    onError: (formErrors) => {
+                        console.error('Error creating event:', formErrors);
+                    },
+                    // Si al final incloc fotos:
+                    // forceFormData: true,
+                });
+            } else {
+                patch(route('creator.events.update', { event: event.id }), {
+                    onSuccess: () => {
+                        console.log('Event updated successfully!');
+                    },
+                    onError: (formErrors) => {
+                        console.error('Error updating event:', formErrors);
+                    },
+                });
+            }
         };
     return (
         <AuthenticatedLayout
@@ -172,7 +171,7 @@ export default function EventCreator({event}) {
                                         Cancel
                                     </PrimaryButton>
                                     <PrimaryButton className="btn btn-primary ms-2" disabled={processing}>
-                                        Create
+                                        {event ? 'Update Event' : 'Create Event'}
                                     </PrimaryButton>
                                 </div>
                             </form>

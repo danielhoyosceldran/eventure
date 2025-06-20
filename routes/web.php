@@ -46,6 +46,7 @@ Route::get('/event_participant/{event_id}', [EventController::class, 'showPartic
 // Gestió del es peticions a "l'API"
 Route::resource('creator/events', EventController::class)->names([
         'store' => 'creator.events.store',
+        'update' => 'creator.events.update',
         // todo: Afegir els que falten
     ]);
 

@@ -68,8 +68,26 @@ class EventController extends Controller
             $event->users()->attach($user->id);
         }
 
-
         return redirect()->route('dashboard')
                          ->with('success', 'Event created successfully!');
+    }
+
+    public function update(Request $request, Event $event): RedirectResponse
+    {
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
+            'start_date' => 'required|date',
+            'end_date' => 'nullable|date|after_or_equal:start_date',
+            'location' => 'required|string|max:255',
+            'capacity' => 'required|integer|min:1',
+            'isOpen' => 'boolean', // Si es pot canviar des del formulari
+            // 'cover_photo' => 'nullable|image|max:2048',
+        ]);
+
+        $event->update($validatedData); // Actualitza l'esdeveniment
+
+        return redirect()->route('dashboard')
+                         ->with('success', 'Event updated successfully!');
     }
 }
