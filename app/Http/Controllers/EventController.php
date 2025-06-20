@@ -19,7 +19,17 @@ class EventController extends Controller
        if (!$event) {
             abort(404);
         }
-        return Inertia::render('EventParticipant', ['event' => $event]);
+
+        $isRegistered = false;
+        if (Auth::check()) {
+            $isRegistered = Auth::user()->events->contains($event->id);
+        }
+
+        return Inertia::render('EventParticipant', [
+            'event' => $event,
+            'isRegistered' => $isRegistered,
+            'currentParticipants' => $event->users->count() - 1
+        ]);
     }
 
     public function showCreatorEvent($event_id)
@@ -43,6 +53,12 @@ class EventController extends Controller
         }
 
         $events = $user->events; // Assuming the User model has a relationship with Event
+
+        $events = $events->map(function ($event) {
+            $currentParticipants = $event->users ? max($event->users->count() - 1, 0) : 0;
+            $event->currentParticipants = $currentParticipants;
+            return $event;
+        });
 
         return Inertia::render('Dashboard', ['events' => $events]);
     }

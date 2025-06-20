@@ -6,7 +6,7 @@ import TextInput from '@/Components/TextInput';
 import { Head, useForm } from '@inertiajs/react';
 import { useEffect } from 'react';
 
-export default function EventCreator({event}) {
+export default function EventCreator({event, currentParticipants}) {
     const { data, setData, post, patch, processing, errors, reset } = useForm({
         name: event?.name || '', // Usa optional chaining i fallback a ''
         description: event?.description || '',

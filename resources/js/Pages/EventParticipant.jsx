@@ -1,7 +1,35 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import { Head } from '@inertiajs/react';
+import { Head, useForm } from '@inertiajs/react';
 
-export default function EventParticipant({event}) {
+export default function EventParticipant({auht, event, isRegistered, currentParticipants}) {
+    const { post: subscribePost, processing: subscribing } = useForm({});
+    const { post: unsubscribePost, processing: unsubscribing } = useForm({});
+
+    const handleSubscribe = () => {
+        subscribePost(route('events.subscribe', { eventId: event.id }), {
+            onSuccess: () => {
+                // Inertia recarregarà la pàgina i les props s'actualitzaran
+                // (incloent `isRegistered` i `currentParticipants`)
+            },
+            onError: (errors) => {
+                console.error("Subscription error:", errors);
+                // Mostrar errors a la UI si cal
+            }
+        });
+    };
+
+    const handleUnsubscribe = () => {
+        unsubscribePost(route('events.unsubscribe', { eventId: event.id }), {
+            onSuccess: () => {
+                // Inertia recarregarà la pàgina
+            },
+            onError: (errors) => {
+                console.error("Unsubscription error:", errors);
+            }
+        });
+    };
+
+
     return (
         <AuthenticatedLayout
             header={
@@ -72,10 +100,29 @@ export default function EventParticipant({event}) {
                                     </div>
                                 </div>
                             </div>
-                            <div className="mb-3 d-flex justify-content-center">
+                            {/* <div className="mb-3 d-flex justify-content-center">
                                 <button className={`btn ${event?.isOpen ? "btn-primary" : "btn-secondary"}`} disabled={!event?.isOpen} onClick={() => console.log('Button clicked')}>
                                     Subscribre
                                 </button>
+                            </div> */}
+                            <div className="mb-3 d-flex justify-content-center">
+                                {isRegistered ? (
+                                    <button
+                                        onClick={handleUnsubscribe}
+                                        disabled={unsubscribing}
+                                        className="btn btn-danger"
+                                    >
+                                        {unsubscribing ? 'Unsubscribing...' : 'Unsubscribe'}
+                                    </button>
+                                ) : (
+                                    <button
+                                        onClick={handleSubscribe}
+                                        disabled={subscribing || currentParticipants >= event.capacity}
+                                        className="btn btn-success"
+                                    >
+                                        {subscribing ? 'Subscribing...' : (currentParticipants >= event.capacity ? 'Full' : 'Subscribe')}
+                                    </button>
+                                )}
                             </div>
                         </div>
                     </div>

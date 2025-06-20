@@ -8,7 +8,7 @@ export default function EventRow({ event }) {
                     <div className="row">
                         <div className="col">{event.name}</div>
                         <div className="col text-center">{event.location}</div>
-                        <div className="col text-end">{event.capacity}</div>
+                        <div className="col text-end">{event.currentParticipants}/{event.capacity}</div>
                     </div>
                 </div>
             </div>

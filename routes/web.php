@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\SubscriptionController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -43,11 +44,17 @@ Route::get('/event_participant/{event_id}', [EventController::class, 'showPartic
     ->middleware(['auth', 'participant'])
     ->name('event.participant.show');
 
+// event subscripcions
+Route::middleware(['auth', 'participant'])->group(function () {
+    Route::post('/events/{eventId}/subscribe', [SubscriptionController::class, 'subscribe'])->name('events.subscribe');
+    Route::post('/events/{eventId}/unsubscribe', [SubscriptionController::class, 'unsubscribe'])->name('events.unsubscribe');
+});
+
 // Gestió del es peticions a "l'API"
 Route::resource('creator/events', EventController::class)->names([
-        'store' => 'creator.events.store',
-        'update' => 'creator.events.update',
-        // todo: Afegir els que falten
-    ]);
+    'store' => 'creator.events.store',
+    'update' => 'creator.events.update',
+    // todo: Afegir els que falten
+]);
 
 require __DIR__.'/auth.php';
