@@ -1,13 +1,25 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import EventRow from '@/Components/EventRow';
 
-import { Head, Link } from '@inertiajs/react';
-import { useEffect } from 'react';
+import { Head, Link, useForm } from '@inertiajs/react';
 
 export default function Dashboard( {events} ) {
-    useEffect(() => {
-        console.log(events);
-    }, [events]);
+    const { delete: destroy, processing } = useForm({});
+
+    const handleDeleteEvent = (eventId, eventName) => {
+        if (confirm(`Are you sure you want to delete the event "${eventName}"? This action cannot be undone.`)) {
+            destroy(route('creator.events.destroy', { event: eventId }), {
+                onSuccess: () => {
+                    console.log('Event deleted successfully!');
+                },
+                onError: (formErrors) => {
+                    console.error('Error deleting event:', formErrors);
+                },
+            });
+        }
+    };
+
+
     return (
         <AuthenticatedLayout
             header={
@@ -26,7 +38,12 @@ export default function Dashboard( {events} ) {
                         </div>
                         {
                             events.map((event) => (
-                                <EventRow key={event.id} event={event} />
+                                <EventRow
+                                    key={event.id}
+                                    event={event}
+                                    handleDeleteEvent={handleDeleteEvent}
+                                    processing={processing}
+                                />
                             ))
                         }
                         <Link href={route("event.creator.show", { event_id: "create_event" })} className="btn btn-primary m-3">

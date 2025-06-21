@@ -106,4 +106,12 @@ class EventController extends Controller
         return redirect()->route('dashboard')
                          ->with('success', 'Event updated successfully!');
     }
+
+    public function destroy(Event $event): RedirectResponse
+    {
+        $event->delete();
+
+        return redirect()->route('dashboard')
+                         ->with('success', 'Event deleted successfully!');
+    }
 }

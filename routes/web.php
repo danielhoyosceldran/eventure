@@ -54,6 +54,7 @@ Route::middleware(['auth', 'participant'])->group(function () {
 Route::resource('creator/events', EventController::class)->names([
     'store' => 'creator.events.store',
     'update' => 'creator.events.update',
+    'destroy' => 'creator.events.destroy',
     // todo: Afegir els que falten
 ]);
 
