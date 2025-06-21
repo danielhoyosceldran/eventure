@@ -6,7 +6,7 @@ import TextInput from '@/Components/TextInput';
 import { Head, useForm } from '@inertiajs/react';
 import { useEffect } from 'react';
 
-export default function EventCreator({event, currentParticipants}) {
+export default function EventCreator({auth, event}) {
     const { data, setData, post, patch, processing, errors, reset } = useForm({
         name: event?.name || '', // Usa optional chaining i fallback a ''
         description: event?.description || '',
@@ -17,37 +17,36 @@ export default function EventCreator({event, currentParticipants}) {
         isOpen: event?.isOpen ?? true, // Usa nullish coalescing per a valors booleans o per defecte
     });
 
-        useEffect(() => {
-            console.log(data.isOpen);
-        }, [data.isOpen]);
-        const submit = (e) => {
-            e.preventDefault();
+    const submit = (e) => {
+        e.preventDefault();
 
-            console.log('Submitting event data:', data);
+        console.log('Submitting event data:', data);
 
-            if (event == null) {
-                post(route('creator.events.store'), {
-                    onSuccess: () => {
-                        console.log('Event created successfully!');
-                        reset();
-                    },
-                    onError: (formErrors) => {
-                        console.error('Error creating event:', formErrors);
-                    },
-                    // Si al final incloc fotos:
-                    // forceFormData: true,
-                });
-            } else {
-                patch(route('creator.events.update', { event: event.id }), {
-                    onSuccess: () => {
-                        console.log('Event updated successfully!');
-                    },
-                    onError: (formErrors) => {
-                        console.error('Error updating event:', formErrors);
-                    },
-                });
-            }
-        };
+        console.log('Submitting event data:', data);
+
+        if (event == null) {
+            post(route('creator.events.store'), {
+                onSuccess: () => {
+                    console.log('Event created successfully!');
+                    reset();
+                },
+                onError: (formErrors) => {
+                    console.error('Error creating event:', formErrors);
+                },
+                // todo: Si al final incloc fotos:
+                // forceFormData: true,
+            });
+        } else {
+            patch(route('creator.events.update', { event: event.id }), {
+                onSuccess: () => {
+                    console.log('Event updated successfully!');
+                },
+                onError: (formErrors) => {
+                    console.error('Error updating event:', formErrors);
+                },
+            });
+        }
+    };
     return (
         <AuthenticatedLayout
             header={

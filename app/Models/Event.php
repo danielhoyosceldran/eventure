@@ -21,6 +21,8 @@ class Event extends Model
         'start_date',
         'end_date',
         'location',
+        'creator_id',
+        'creator_name',
         'capacity',
         'isOpen',
         //'cover_photo', // Assegura't que el camp cover_photo estigui aquí si el vols gestionar

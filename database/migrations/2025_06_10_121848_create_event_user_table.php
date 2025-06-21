@@ -9,20 +9,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('event_user', function (Blueprint $table) {
-            // Clau forana a la taula `events`. Si un esdeveniment s'elimina, també s'eliminen les seves inscripcions.
             $table->foreignId('event_id')->constrained()->onDelete('cascade');
-            // Clau forana a la taula `users`. Si un usuari s'elimina, també s'eliminen les seves inscripcions.
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-
-            // Defineix la clau primària composta per assegurar que cada parella event-user és única
             $table->primary(['event_id', 'user_id']);
-
-            $table->timestamps(); // Opcional: per saber quan es va realitzar la inscripció
+            $table->timestamps();
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('event_user'); // Elimina la taula `event_user` si es desfà la migració
+        Schema::dropIfExists('event_user');
     }
 };

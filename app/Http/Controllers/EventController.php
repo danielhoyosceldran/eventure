@@ -76,6 +76,12 @@ class EventController extends Controller
             // 'cover_photo' => 'nullable|image|max:2048',
         ]);
 
+        // Afegeix els camps que falten
+        // Ho faig aquí perquè no vull que, en cap cas, el creador pugui
+        // canviar aquests camps des del formulari.
+        $validatedData['creator_id'] = Auth::id();
+        $validatedData['creator_name'] = Auth::user()->name;
+
 
         $event = Event::create($validatedData);
 
