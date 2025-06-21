@@ -35,11 +35,9 @@ class AuthenticatedSessionController extends Controller
 
         // Lògica de redirecció basada en el rol de l'usuari
         if (Auth::user()->role === 'creator') {
-            return redirect()->intended(route('dashboard')); // Redirigeix al dashboard de creador
+            return redirect()->intended(route('dashboard', absolute: false));
         }
-
-        // Per a 'participant' o qualsevol altre rol no 'creator'
-        return redirect()->intended(route('events')); // Redirigeix a la pàgina d'esdeveniments per a participants
+        return redirect()->intended(route('events', absolute: false));
     }
 
     /**

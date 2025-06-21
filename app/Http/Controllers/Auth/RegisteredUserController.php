@@ -34,7 +34,7 @@ class RegisteredUserController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|lowercase|email|max:255|unique:'.User::class,
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'role' => 'required|in:creator, participant',
+            'role' => 'required|in:creator,participant',
              // 'avatar' => ['nullable', 'string', 'max:255'],
         ]);
 
@@ -50,6 +50,10 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(route('dashboard', absolute: false));
+        // Lògica de redirecció basada en el rol de l'usuari
+        if (Auth::user()->role === 'creator') {
+            return redirect()->intended(route('dashboard', absolute: false));
+        }
+        return redirect()->intended(route('events', absolute: false));
     }
 }

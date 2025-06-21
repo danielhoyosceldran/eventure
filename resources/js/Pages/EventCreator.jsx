@@ -20,10 +20,6 @@ export default function EventCreator({auth, event}) {
     const submit = (e) => {
         e.preventDefault();
 
-        console.log('Submitting event data:', data);
-
-        console.log('Submitting event data:', data);
-
         if (event == null) {
             post(route('creator.events.store'), {
                 onSuccess: () => {
