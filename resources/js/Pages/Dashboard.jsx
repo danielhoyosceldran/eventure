@@ -1,5 +1,5 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import EventRow from '@/Components/EventRow';
+import CreatorEventRow from '@/Components/EventRow';
 
 import { Head, Link, useForm } from '@inertiajs/react';
 
@@ -38,7 +38,7 @@ export default function Dashboard( {events} ) {
                         </div>
                         {
                             events.map((event) => (
-                                <EventRow
+                                <CreatorEventRow
                                     key={event.id}
                                     event={event}
                                     handleDeleteEvent={handleDeleteEvent}

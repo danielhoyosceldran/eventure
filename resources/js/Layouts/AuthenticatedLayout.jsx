@@ -5,7 +5,7 @@ import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
 import { Link, usePage } from '@inertiajs/react';
 import { useState } from 'react';
 
-export default function AuthenticatedLayout({ header, children }) {
+export default function AuthenticatedLayout({ auth, header, children }) {
     const user = usePage().props.auth.user;
 
     const [showingNavigationDropdown, setShowingNavigationDropdown] =
@@ -21,31 +21,34 @@ export default function AuthenticatedLayout({ header, children }) {
                     <button
                         className="navbar-toggler"
                         type="button"
-                        onClick={() =>
-                            setShowingNavigationDropdown(
-                                (previousState) => !previousState,
-                            )
-                        }
-                        aria-controls="navbarNav"
+                            onClick={() =>
+                                setShowingNavigationDropdown(
+                                    (previousState) => !previousState,
+                                )
+                            }
+                            aria-controls="navbarNav"
                         aria-expanded={showingNavigationDropdown}
                         aria-label="Toggle navigation"
                     >
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className={`collapse navbar-collapse${showingNavigationDropdown ? ' show' : ''}`} id="navbarNav">
-                        {/* Example NavLink usage, uncomment if needed */}
-                        {/* <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li className="nav-item">
-                                <NavLink
-                                    href={route('dashboard')}
-                                    active={route().current('dashboard')}
-                                    className="nav-link"
-                                >
-                                    Dashboard
-                                </NavLink>
-                            </li>
-                        </ul> */}
-                        <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+                        {
+                            "participant" == "participant" && (
+                                <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                                    <li className="nav-item">
+                                        <NavLink
+                                            href={route('events.history')}
+                                            active={route().current('events.history')}
+                                            className="nav-link"
+                                        >
+                                            Events History
+                                        </NavLink>
+                                    </li>
+                                </ul>
+                            )
+                        }
+                        <ul className="navbar-nav ms-auto mb-2 mb-lg-0 d-none d-lg-block">
                             <li className="nav-item dropdown">
                                 <a
                                     className="nav-link dropdown-toggle"
@@ -86,14 +89,7 @@ export default function AuthenticatedLayout({ header, children }) {
             {/* Responsive Nav for small screens */}
             <div className={`d-lg-none${showingNavigationDropdown ? '' : ' d-none'}`}>
                 <div className="bg-white border-bottom px-3 py-2">
-                    <ResponsiveNavLink
-                        href={route('dashboard')}
-                        active={route().current('dashboard')}
-                        className="nav-link"
-                    >
-                        Dashboard
-                    </ResponsiveNavLink>
-                    <div className="border-top pt-3 mt-3">
+                    <div className="my-3">
                         <div className="fw-bold">{user.name}</div>
                         <div className="text-muted small">{user.email}</div>
                         <div className="mt-2">

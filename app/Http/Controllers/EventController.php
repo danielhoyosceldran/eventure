@@ -2,11 +2,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Event; // Importa el model Event
+use App\Models\Event;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth; // Per accedir a l'usuari autenticat
-use Inertia\Inertia; // Per si redirigeixes o renderitzes una vista
-use Illuminate\Http\RedirectResponse; // Per al tipus de retorn de la redirecció
+use Illuminate\Support\Facades\Auth;
+use Inertia\Inertia;
+use Illuminate\Http\RedirectResponse;
 
 class EventController extends Controller
 {
@@ -30,6 +30,18 @@ class EventController extends Controller
             'isRegistered' => $isRegistered,
             'currentParticipants' => $event->users->count() - 1
         ]);
+    }
+
+    public function showHistoryEvents()
+    {
+        $user = Auth::user();
+        if (!$user || $user->role !== 'participant') {
+            abort(403, 'Unauthorized action.');
+        }
+
+        $events = $user->events()->get();
+
+        return Inertia::render('EventsHistory', ['events' => $events]);
     }
 
     public function showCreatorEvent($event_id)

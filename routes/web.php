@@ -35,6 +35,9 @@ Route::get('/dashboard', [EventController::class, 'showCreatorEvents'])->middlew
 
 Route::get('/events', [EventController::class, 'showEvents'])->middleware(['auth', 'participant'])->name('events');
 
+Route::get('/events_history', [EventController::class, 'showHistoryEvents'])
+    ->middleware(['auth', 'participant'])
+    ->name('events.history');
 
 Route::get('/event_creator/{event_id}', [EventController::class, 'showCreatorEvent'])
     ->middleware(['auth', 'creator'])

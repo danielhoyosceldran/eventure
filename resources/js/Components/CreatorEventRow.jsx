@@ -1,6 +1,6 @@
 import { Link } from "@inertiajs/react";
 
-export default function EventRow({ event, handleDeleteEvent, processing }) {
+export default function CreatorEventRow({ event, handleDeleteEvent, processing }) {
     return (
         <div className="card mx-3 my-1">
                 <div className="card-body">
