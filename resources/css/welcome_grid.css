@@ -1,0 +1,26 @@
+.welcome_photo_container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 8px;
+}
+
+.welcome_photo1 {
+    grid-column: span 2 / span 2;
+    grid-row: span 2 / span 2;
+}
+
+.welcome_photo2 {
+    grid-column-start: 3;
+}
+
+.welcome_photo3 {
+    grid-row: span 2 / span 2;
+    grid-column-start: 3;
+    grid-row-start: 2;
+}
+
+.welcome_photo4 {
+    grid-column: span 2 / span 2;
+    grid-row-start: 3;
+}

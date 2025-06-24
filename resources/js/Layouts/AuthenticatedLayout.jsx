@@ -16,7 +16,7 @@ export default function AuthenticatedLayout({ auth, header, children }) {
             <nav className="navbar navbar-expand-lg navbar-light bg-white border-bottom">
                 <div className="container">
                     <Link href="/" className="navbar-brand d-flex align-items-center">
-                        <ApplicationLogo className="me-2" style={{ height: '36px' }} />
+                        <ApplicationLogo className="me-2" style={{ width: 160, height: 30 }} />
                     </Link>
                     <button
                         className="navbar-toggler"

@@ -1,5 +1,6 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head, useForm } from '@inertiajs/react';
+import placeholderImages from "../../placeholderAssets/data";
 
 export default function EventParticipant({auht, event, isRegistered, currentParticipants}) {
     const { post: subscribePost, processing: subscribing } = useForm({});
@@ -65,7 +66,7 @@ export default function EventParticipant({auht, event, isRegistered, currentPart
                         <div className="card-body text-dark">
                             <div style={{ position: 'relative', width: '100%', height: '40vh' }}>
                                 <img
-                                    src="https://images.pexels.com/photos/2325447/pexels-photo-2325447.jpeg"
+                                    src={placeholderImages[event.id % placeholderImages.length]}
                                     className="card-img-top mb-3"
                                     alt="..."
                                     style={{

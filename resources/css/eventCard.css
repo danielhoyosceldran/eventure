@@ -1,0 +1,39 @@
+.event-card-contiainer {
+
+}
+
+.event-card {
+    background-color: #fff;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+
+
+    transition: all .2s ease-out;
+    & img {
+        transition: transform .2s ease-out;
+    }
+}
+
+.event-card:hover {
+    background-color: #f8f9fa;
+}
+
+.open-close-tag{
+    position: relative;
+    &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: -12px;
+        transform: translateY(-50%);
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+    }
+    &.event-open::after {
+        background-color: #28a745; /* Green for open */
+    }
+    &.event-close::after {
+        background-color: #dc3545;
+    }
+}

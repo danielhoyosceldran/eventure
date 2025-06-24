@@ -6,7 +6,7 @@ export default function GuestLayout({ children }) {
         <div className="d-flex flex-column min-vh-100 align-items-center bg-light pt-4">
             <div>
                 <Link href="/">
-                    <ApplicationLogo className="mb-3" style={{ height: 80, color: '#6c757d' }} />
+                    <ApplicationLogo className="mb-3" style={{ width: 260 }} />
                 </Link>
             </div>
 
