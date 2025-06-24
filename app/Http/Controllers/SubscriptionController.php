@@ -37,7 +37,7 @@ class SubscriptionController extends Controller
 
         $user->events()->attach($event->id);
 
-        return redirect()->route('events', ['event_id' => $event->id])->with('success', 'Successfully subscribed!');
+        return redirect()->route('event.participant.show', ['event_id' => $event->id])->with('success', 'Successfully subscribed!');
     }
 
     public function unsubscribe(Request $request, string $eventId): RedirectResponse
@@ -61,6 +61,6 @@ class SubscriptionController extends Controller
 
         $user->events()->detach($event->id);
 
-        return redirect()->route('events', ['event_id' => $event->id])->with('success', 'Successfully unsubscribed!');
+        return redirect()->route('event.participant.show', ['event_id' => $event->id])->with('success', 'Successfully unsubscribed!');
     }
 }
