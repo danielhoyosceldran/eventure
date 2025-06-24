@@ -8,6 +8,7 @@ export default function EventParticipant({auht, event, isRegistered, currentPart
     const handleSubscribe = () => {
         subscribePost(route('events.subscribe', { eventId: event.id }), {
             onSuccess: () => {
+                console.log("Subscription successful");
                 // Inertia recarregarà la pàgina i les props s'actualitzaran
                 // (incloent `isRegistered` i `currentParticipants`)
             },
@@ -106,23 +107,27 @@ export default function EventParticipant({auht, event, isRegistered, currentPart
                                 </button>
                             </div> */}
                             <div className="mb-3 d-flex justify-content-center">
-                                {isRegistered ? (
-                                    <button
-                                        onClick={handleUnsubscribe}
-                                        disabled={unsubscribing}
-                                        className="btn btn-danger"
-                                    >
-                                        {unsubscribing ? 'Unsubscribing...' : 'Unsubscribe'}
-                                    </button>
-                                ) : (
-                                    <button
-                                        onClick={handleSubscribe}
-                                        disabled={subscribing || currentParticipants >= event.capacity}
-                                        className="btn btn-success"
-                                    >
-                                        {subscribing ? 'Subscribing...' : (currentParticipants >= event.capacity ? 'Full' : 'Subscribe')}
-                                    </button>
-                                )}
+                                {
+                                    new Date() < new Date(event.end_date) && (
+                                        isRegistered ? (
+                                            <button
+                                                onClick={handleUnsubscribe}
+                                                disabled={unsubscribing}
+                                                className="btn btn-danger"
+                                            >
+                                                {unsubscribing ? 'Unsubscribing...' : 'Unsubscribe'}
+                                            </button>
+                                        ) : (
+                                            <button
+                                                onClick={handleSubscribe}
+                                                disabled={subscribing || currentParticipants >= event.capacity}
+                                                className="btn btn-success"
+                                            >
+                                                {subscribing ? 'Subscribing...' : (currentParticipants >= event.capacity ? 'Full' : 'Subscribe')}
+                                            </button>
+                                        )
+                                    )
+                                }
                             </div>
                         </div>
                     </div>

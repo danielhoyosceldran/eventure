@@ -1,5 +1,5 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import CreatorEventRow from '@/Components/EventRow';
+import CreatorEventRow from '@/Components/CreatorEventRow';
 
 import { Head, Link, useForm } from '@inertiajs/react';
 

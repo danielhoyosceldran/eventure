@@ -12,6 +12,7 @@ class SubscriptionController extends Controller
 {
     public function subscribe(Request $request, string $eventId): RedirectResponse
     {
+
         if (!Auth::check()) {
             return redirect()->route('login')->with('error', 'You must be logged in to subscribe.');
         }
@@ -29,12 +30,12 @@ class SubscriptionController extends Controller
             return redirect()->back()->with('error', 'You are already subscribed to this event.');
         }
 
-        if ($event->users->count() >= $event->capacity) {
+        // -1 perque l'usuari creador ja està comptat en la relació 'users'.
+        if ($event->users->count()-1 >= $event->capacity) {
             return redirect()->back()->with('error', 'Event is full.');
         }
 
         $user->events()->attach($event->id);
-
 
         return redirect()->route('events', ['event_id' => $event->id])->with('success', 'Successfully subscribed!');
     }
