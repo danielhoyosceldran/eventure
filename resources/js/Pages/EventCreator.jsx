@@ -4,7 +4,6 @@ import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
 import { Head, useForm } from '@inertiajs/react';
-import { useEffect } from 'react';
 
 export default function EventCreator({auth, event}) {
     const { data, setData, post, patch, processing, errors, reset } = useForm({
@@ -43,6 +42,7 @@ export default function EventCreator({auth, event}) {
             });
         }
     };
+
     return (
         <AuthenticatedLayout
             header={
