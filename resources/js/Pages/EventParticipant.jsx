@@ -30,6 +30,24 @@ export default function EventParticipant({auht, event, isRegistered, currentPart
         });
     };
 
+    // Format dates
+    const start_date = event.start_date ? new Date(event.start_date).toLocaleDateString() : "Start date not specified";
+    const end_date = event.end_date ? new Date(event.end_date).toLocaleDateString() : "End date not specified";
+
+    // Check if the event has started and finished
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    const eventStartDate = new Date(event.start_date);
+    eventStartDate.setHours(0, 0, 0, 0);
+
+    const eventEndDate = new Date(event.end_date);
+    eventEndDate.setHours(0, 0, 0, 0);
+
+    const eventStarted = eventStartDate <= today;
+    const eventFinished = eventEndDate < today;
+
+    const dateTextColor = eventStarted ? (eventFinished ? 'text-danger' : 'text-success') : '';
 
     return (
         <AuthenticatedLayout
@@ -70,10 +88,9 @@ export default function EventParticipant({auht, event, isRegistered, currentPart
                                         <div className="col-6">
                                             <div className="mb-3">
                                                 <strong>Dates:</strong>
-                                                <div>
-                                                    {event.start_date ? new Date(event.start_date).toLocaleDateString() : "Start date not specified"} - {
-                                                        event.end_date ? new Date(event.end_date).toLocaleDateString() : "End date not specified"
-                                                    }
+                                                <div
+                                                    className={dateTextColor}>
+                                                    {start_date} - {end_date}
                                                 </div>
                                             </div>
                                         </div>

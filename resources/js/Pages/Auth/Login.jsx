@@ -65,7 +65,7 @@ export default function Login({ status, canResetPassword }) {
                     <InputError message={errors.password} className="mt-2 text-danger" />
                 </div>
 
-                <div className="mb-3 form-check">
+                {/* <div className="mb-3 form-check">
                     <Checkbox
                         name="remember"
                         checked={data.remember}
@@ -77,7 +77,7 @@ export default function Login({ status, canResetPassword }) {
                     <label className="form-check-label ms-2 text-secondary">
                         Remember me
                     </label>
-                </div>
+                </div> */}
 
                 <div className="mb-3 d-flex justify-content-end align-items-center">
                     {canResetPassword && (
