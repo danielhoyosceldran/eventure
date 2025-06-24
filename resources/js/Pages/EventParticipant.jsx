@@ -129,7 +129,7 @@ export default function EventParticipant({auht, event, isRegistered, currentPart
                                         isRegistered ? (
                                             <button
                                                 onClick={handleUnsubscribe}
-                                                disabled={unsubscribing}
+                                                disabled={unsubscribing || eventStarted}
                                                 className="btn btn-danger"
                                             >
                                                 {unsubscribing ? 'Unsubscribing...' : 'Unsubscribe'}
@@ -137,7 +137,7 @@ export default function EventParticipant({auht, event, isRegistered, currentPart
                                         ) : (
                                             <button
                                                 onClick={handleSubscribe}
-                                                disabled={subscribing || currentParticipants >= event.capacity}
+                                                disabled={subscribing || currentParticipants >= event.capacity || eventStarted}
                                                 className="btn btn-success"
                                             >
                                                 {subscribing ? 'Subscribing...' : (currentParticipants >= event.capacity ? 'Full' : 'Subscribe')}
