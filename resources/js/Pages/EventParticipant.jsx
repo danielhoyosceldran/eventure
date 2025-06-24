@@ -106,7 +106,7 @@ export default function EventParticipant({auht, event, isRegistered, currentPart
                                         <div className="col-6">
                                             <div className="mb-3">
                                                 <strong>Capacity:</strong>
-                                                <div>{event?.capacity}</div>
+                                                <div>{currentParticipants}/{event?.capacity}</div>
                                             </div>
                                         </div>
                                         <div className="col-6">

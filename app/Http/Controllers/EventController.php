@@ -28,7 +28,7 @@ class EventController extends Controller
         return Inertia::render('EventParticipant', [
             'event' => $event,
             'isRegistered' => $isRegistered,
-            'currentParticipants' => $event->users->count() - 1
+            'currentParticipants' => $event->users ? max($event->users->count() - 1, 0) : 0
         ]);
     }
 
