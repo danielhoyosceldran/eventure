@@ -2,8 +2,14 @@ import { Link } from '@inertiajs/react';
 import "../../css/eventCard.css";
 import "../../css/globalStyles.css";
 import placeholderImages from "../../placeholderAssets/data";
+import IconText from './iconText';
 
-//todo: Fer que els events siguin dinàmics i que es carreguin des de la base de dades
+import description from "../../assets/icons/align-left.svg";
+import location from "../../assets/icons/map-pin.svg";
+import user from "../../assets/icons/user.svg";
+import clock from "../../assets/icons/clock.svg";
+
+
 export default function EventCard({event}) {
     const start_date = event.start_date ? new Date(event.start_date).toLocaleDateString() : "Start date not specified";
     const end_date = event.end_date ? new Date(event.end_date).toLocaleDateString() : "End date not specified";
@@ -22,25 +28,25 @@ export default function EventCard({event}) {
                     />
                     <div className="card-body">
                         <div className="d-flex justify-content-between align-items-center mb-2">
-                            <h5 className="mb-0 d-flex justify-content-between align-items-center">
+                            <h5 className="mb-0 text-truncate w-75">
                                 {event.name}
                             </h5>
                             <p className={`card-text open-close-tag ${event.isOpen ? 'event-open' : 'event-close'}`} style={{fontSize: "0.9rem"}}>
                                 {event.isOpen ? "Open" : "Closed"}
                             </p>
                         </div>
-                        <p className="card-text text-muted" style={{fontSize: "0.9rem"}}>
-                            {event.description || "No description available for this event."}
+                        <p className="card-text text-muted w-100" style={{fontSize: "0.9rem"}}>
+                            <IconText text={event.description || "No description available for this event."} icon={description} textClassName='text-truncate' />
                         </p>
                         <ul className="list-inline mb-0 text-muted small d-flex justify-content-start">
                             <li className="list-inline-item me-3">
-                                {event.capacity || "Capacity not specified"}
+                                <IconText text={event.capacity || "Capacity not specified"} icon={user} />
                             </li>
                             <li className="list-inline-item me-3">
-                                {start_date} - {end_date}
+                                <IconText text={start_date + " - " + end_date} icon={clock} />
                             </li>
                             <li className="list-inline-item">
-                                {event.location || "Location not specified"}
+                                <IconText text={event.location || "Location not specified"} icon={location} />
                             </li>
                         </ul>
                     </div>
