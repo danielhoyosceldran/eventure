@@ -2,9 +2,10 @@ import ParticipantEventRow from "@/Components/ParticipantEventRow";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head } from "@inertiajs/react";
 
-export default function EventsHistory({ events }) {
+export default function EventsHistory({ auth, events }) {
     return (
         <AuthenticatedLayout
+            auth={auth}
             header={
                 <h2 className="h4 fw-semibold text-dark">
                     Events History

@@ -45,6 +45,7 @@ export default function EventCreator({auth, event}) {
 
     return (
         <AuthenticatedLayout
+            auth={auth}
             header={
                 <h2 className="h4 fw-semibold text-dark">
                     Event

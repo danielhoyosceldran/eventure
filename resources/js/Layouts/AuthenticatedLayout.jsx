@@ -33,8 +33,19 @@ export default function AuthenticatedLayout({ auth, header, children }) {
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className={`collapse navbar-collapse${showingNavigationDropdown ? ' show' : ''}`} id="navbarNav">
+                        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li className="nav-item">
+                                <NavLink
+                                    href={route("welcome")} // router to dashboard or events route (if logged in)
+                                    active={route().current(auth.user.role == "participant" ? 'events' : 'dashboard')} // todo: if we add more roles, we can use a switch case or similar logic
+                                    className="nav-link"
+                                >
+                                    Home
+                                </NavLink>
+                            </li>
+                        </ul>
                         {
-                            "participant" == "participant" && (
+                            auth.user.role == "participant" && (
                                 <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                                     <li className="nav-item">
                                         <NavLink

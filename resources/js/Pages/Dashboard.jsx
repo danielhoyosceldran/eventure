@@ -3,7 +3,7 @@ import CreatorEventRow from '@/Components/CreatorEventRow';
 
 import { Head, Link, useForm } from '@inertiajs/react';
 
-export default function Dashboard( {events} ) {
+export default function Dashboard( {auth, events} ) {
     const { delete: destroy, processing } = useForm({});
 
     const handleDeleteEvent = (eventId, eventName) => {
@@ -22,6 +22,7 @@ export default function Dashboard( {events} ) {
 
     return (
         <AuthenticatedLayout
+            auth={auth}
             header={
                 <h2 className="h4 fw-semibold text-dark">
                     Dashboard

@@ -2,7 +2,7 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head, useForm } from '@inertiajs/react';
 import placeholderImages from "../../placeholderAssets/data";
 
-export default function EventParticipant({auht, event, isRegistered, currentParticipants}) {
+export default function EventParticipant({auth, event, isRegistered, currentParticipants}) {
     const { post: subscribePost, processing: subscribing } = useForm({});
     const { post: unsubscribePost, processing: unsubscribing } = useForm({});
 
@@ -52,6 +52,7 @@ export default function EventParticipant({auht, event, isRegistered, currentPart
 
     return (
         <AuthenticatedLayout
+            auth={auth}
             header={
                 <h2 className="h4 fw-semibold text-dark">
                     {event.name}

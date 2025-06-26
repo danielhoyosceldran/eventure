@@ -3,9 +3,10 @@ import EventCard from '@/Components/EventCard';
 import { Head, Link } from '@inertiajs/react';
 import { useEffect } from 'react';
 
-export default function Events({ events }) {
+export default function Events({ auth, events }) {
     return (
         <AuthenticatedLayout
+            auth={auth}
             header={
                 <h2 className="h4 fw-semibold text-dark">
                     Events
