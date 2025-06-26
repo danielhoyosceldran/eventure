@@ -4,3 +4,11 @@
     object-fit: cover;
     display: block;
 }
+
+.btn-hover-effect img{
+    transition: all 0.2s ease-out;
+}
+
+.btn-hover-effect:hover img {
+    filter: drop-shadow(0px 0px 5px #ff9393);
+}

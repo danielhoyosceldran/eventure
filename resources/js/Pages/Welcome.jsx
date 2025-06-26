@@ -34,7 +34,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                     <img className="rounded image-in-container" src="https://images.unsplash.com/photo-1750459273768-f2c1018ba69d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="event photo" />
                                 </div>
                                 <div className="welcome_photo2">
-                                    <img className="rounded image-in-container" src="https://images.unsplash.com/photo-1750440982726-d723eab666a5?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="event photo" />
+                                    <img className="rounded image-in-container" src="https://images.unsplash.com/photo-1532089006065-de61ca171e56?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="event photo" />
                                 </div>
                                 <div className="welcome_photo3">
                                     <img className="rounded image-in-container" src="https://plus.unsplash.com/premium_photo-1749747537947-5f118ee03528?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="event photo" />

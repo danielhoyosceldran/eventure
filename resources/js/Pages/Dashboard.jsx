@@ -32,10 +32,7 @@ export default function Dashboard( {events} ) {
 
             <div className="py-5">
                 <div className="container">
-                    <div className="card shadow-sm">
-                        <div className="card-body text-dark">
-                            You're logged in!
-                        </div>
+                    <div className="card shadow-sm pt-3">
                         {
                             events.map((event) => (
                                 <CreatorEventRow

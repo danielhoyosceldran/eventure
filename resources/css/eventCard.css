@@ -31,9 +31,9 @@
         border-radius: 50%;
     }
     &.event-open::after {
-        background-color: #28a745; /* Green for open */
+        background-color: #75ff8f;
     }
     &.event-close::after {
-        background-color: #dc3545;
+        background-color: #ff7575;
     }
 }
