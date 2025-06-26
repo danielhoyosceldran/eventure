@@ -35,12 +35,12 @@ export default function EventCard({event}) {
                                 {event.isOpen ? "Open" : "Closed"}
                             </p>
                         </div>
-                        <p className="card-text text-muted w-100" style={{fontSize: "0.9rem"}}>
+                        <div className="card-text text-muted w-100 pb-2" style={{fontSize: "0.9rem"}}>
                             <IconText text={event.description || "No description available for this event."} icon={description} textClassName='text-truncate' />
-                        </p>
+                        </div>
                         <ul className="list-inline mb-0 text-muted small d-flex justify-content-start">
                             <li className="list-inline-item me-3">
-                                <IconText text={event.capacity || "Capacity not specified"} icon={user} />
+                                <IconText text={event.currentParticipants + "/" + event.capacity || "Capacity not specified"} icon={user} />
                             </li>
                             <li className="list-inline-item me-3">
                                 <IconText text={start_date + " - " + end_date} icon={clock} />

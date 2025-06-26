@@ -55,6 +55,12 @@ class EventController extends Controller
     {
         $events = Event::all();
 
+        $events = $events->map(function ($event) {
+            $currentParticipants = $event->users ? max($event->users->count() - 1, 0) : 0;
+            $event->currentParticipants = $currentParticipants;
+            return $event;
+        });
+
         return Inertia::render('Events', ['events' => $events]);
     }
 
