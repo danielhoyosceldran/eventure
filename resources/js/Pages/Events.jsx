@@ -1,7 +1,6 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import EventCard from '@/Components/EventCard';
 import { Head, Link } from '@inertiajs/react';
-import { useEffect } from 'react';
 
 export default function Events({ auth, events }) {
     return (

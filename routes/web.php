@@ -54,11 +54,13 @@ Route::middleware(['auth', 'participant'])->group(function () {
 });
 
 // Gestió del es peticions a "l'API"
-Route::resource('creator/events', EventController::class)->names([
-    'store' => 'creator.events.store',
-    'update' => 'creator.events.update',
-    'destroy' => 'creator.events.destroy',
-    // todo: Afegir els que falten
-]);
+Route::middleware(['auth', 'creator'])->group(function () {
+    Route::resource('creator/events', EventController::class)->names([
+        'store' => 'creator.events.store',
+        'update' => 'creator.events.update',
+        'destroy' => 'creator.events.destroy',
+        // todo: Afegir els que falten
+    ]);
+});
 
 require __DIR__.'/auth.php';
